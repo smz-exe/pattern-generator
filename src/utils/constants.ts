@@ -11,7 +11,7 @@ export const PATTERNS: Pattern[] = [
   { name: 'Synthesis', subtitle: 'Unity from Chaos', color: '#B8A082' },
 ];
 
-export const GRID_SIZE = 20;
+export const GRID_SIZE = 16;
 export const ELEMENT_SIZE = 8;
 export const VISUALIZATION_SIZE = 700;
 export const ANIMATION_SPEED = 0.015;

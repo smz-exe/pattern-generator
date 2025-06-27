@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useCallback } from 'react';
 import { PatternElement } from './PatternElement';
 import { useAnimation } from '../../hooks/useAnimation';
 import { useMousePosition } from '../../hooks/useMousePosition';
@@ -30,10 +30,18 @@ export const PatternVisualization: React.FC<PatternVisualizationProps> = ({
     handleMouseLeave,
   } = useMousePosition(containerRef);
 
+  // Memoized callback for updating parent mouse position
+  const handleMousePosChange = useCallback(
+    (pos: { x: number; y: number }) => {
+      onMousePosChange(pos);
+    },
+    [onMousePosChange]
+  );
+
   // Update parent component's mouse position
   React.useEffect(() => {
-    onMousePosChange(localMousePos);
-  }, [localMousePos, onMousePosChange]);
+    handleMousePosChange(localMousePos);
+  }, [localMousePos, handleMousePosChange]);
 
   const elements = useMemo(() => {
     return generatePatternElements(frame, patternType, {
@@ -46,13 +54,12 @@ export const PatternVisualization: React.FC<PatternVisualizationProps> = ({
     });
   }, [frame, patternType, localMousePos, isHovering, intensity]);
 
-  const containerStyle: React.CSSProperties = {
-    transform: `
-      rotateX(${15 + localMousePos.y * 25}deg) 
-      rotateY(${localMousePos.x * 30 - 15}deg)
-      rotateZ(${Math.sin(frame * 0.01) * 2}deg)
-    `,
-  };
+  const containerStyle: React.CSSProperties = useMemo(
+    () => ({
+      transform: `rotateX(${15 + localMousePos.y * 25}deg) rotateY(${localMousePos.x * 30 - 15}deg) rotateZ(${Math.sin(frame * 0.01) * 2}deg)`,
+    }),
+    [localMousePos.x, localMousePos.y, frame]
+  );
 
   return (
     <div className={styles.visualizationWrapper}>

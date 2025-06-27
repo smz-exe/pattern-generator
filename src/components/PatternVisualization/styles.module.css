@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  will-change: contents;
 }
 
 .container {
@@ -12,6 +13,8 @@
   perspective: 1200px;
   cursor: none;
   position: relative;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .elementsContainer {
@@ -19,7 +22,8 @@
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: transform 0.05s ease-out;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .element {
@@ -28,7 +32,9 @@
   height: 8px;
   border-radius: 50%;
   filter: blur(0.3px);
-  transition: all 0.05s ease-out;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  contain: layout style paint;
 }
 
 .cursor {
@@ -37,9 +43,10 @@
   height: 20px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(0);
   pointer-events: none;
-  transition: all 0.1s ease;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .ambientGradient {
@@ -49,5 +56,6 @@
   right: 0;
   bottom: 0;
   pointer-events: none;
-  transition: background 0.1s ease;
+  will-change: background;
+  contain: layout paint;
 }

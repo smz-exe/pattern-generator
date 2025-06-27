@@ -1,0 +1,37 @@
+.monitor {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #00ff00;
+  z-index: 1000;
+  min-width: 120px;
+}
+
+.metric {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.metric:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.value {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+.warning {
+  color: #ff6b6b !important;
+}

@@ -3,6 +3,7 @@ import { Layout } from './components/Layout';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
 import { PatternVisualization } from './components/PatternVisualization';
+import { PerformanceMonitor } from './components/PerformanceMonitor';
 import type { PatternType } from './types';
 import { PATTERNS, DEFAULT_INTENSITY } from './utils/constants';
 import styles from './App.module.css';
@@ -46,6 +47,8 @@ function App() {
                        rgba(255,255,255,0.03) 0%, transparent 60%)`,
         }}
       />
+
+      <PerformanceMonitor />
     </Layout>
   );
 }
