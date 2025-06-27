@@ -1,0 +1,87 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 100;
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin: 2px 0 0 0;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.intensityControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.intensityLabel {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  font-weight: 300;
+}
+
+.intensitySlider {
+  width: 80px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.intensitySlider::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.intensitySlider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.currentPattern {
+  font-size: 0.75rem;
+  opacity: 0.5;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
