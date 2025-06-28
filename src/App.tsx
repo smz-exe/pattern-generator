@@ -4,6 +4,8 @@ import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
 import { PatternVisualization } from './components/PatternVisualization';
 import { PerformanceMonitor } from './components/PerformanceMonitor';
+import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
 import type { PatternType } from './types';
 import { PATTERNS, DEFAULT_INTENSITY } from './utils/constants';
 import styles from './App.module.css';
@@ -49,6 +51,8 @@ function App() {
       />
 
       <PerformanceMonitor />
+      <SpeedInsights />
+      <Analytics />
     </Layout>
   );
 }

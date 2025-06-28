@@ -9,9 +9,17 @@
     "build": "tsc -b && vite build",
     "lint": "eslint . --ext ts,tsx,js,jsx",
     "lint:fix": "eslint . --ext ts,tsx,js,jsx --fix",
+    "lint:staged": "git diff --cached --name-only --diff-filter=ACM | grep -E '\\.(js|jsx|ts|tsx)$' | xargs -r eslint",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,css,json}\"",
+    "format:staged": "git diff --cached --name-only --diff-filter=ACM | grep -E '\\.(js|jsx|ts|tsx|css|json)$' | xargs -r prettier --write",
+    "format:check:staged": "git diff --cached --name-only --diff-filter=ACM | grep -E '\\.(js|jsx|ts|tsx|css|json)$' | xargs -r prettier --check",
+    "type-check": "tsc --noEmit",
     "preview": "vite preview",
+    "hooks:setup": "chmod +x scripts/setup-git-hooks.sh && ./scripts/setup-git-hooks.sh",
+    "hooks:remove": "rm -f .git/hooks/pre-commit .git/hooks/pre-push",
+    "pre-commit": "npm run lint:staged && npm run format:check:staged && npm run type-check",
+    "pre-push": "npm run build",
     "vercel:dev": "vercel dev",
     "vercel:build": "vercel build",
     "vercel:deploy": "vercel deploy",
@@ -19,6 +27,8 @@
     "vercel:env": "vercel env ls"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
